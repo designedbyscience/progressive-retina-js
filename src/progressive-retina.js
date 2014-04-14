@@ -1,4 +1,5 @@
 var upscaleImagerator = function(imageSelector, options){
+	var self = this;	
 	
 	/*
 	*
@@ -7,7 +8,7 @@ var upscaleImagerator = function(imageSelector, options){
 	*
 	*
 	*/
-	var self = this;	
+
 	
 	var defaults = {
 		threshold2x: 800,
@@ -59,11 +60,19 @@ var upscaleImagerator = function(imageSelector, options){
 		checkFileRequest.send();
 	
 	};
+	
+	
+	var changeSrc = function(img, size){
+		var smallSrc = img.getAttribute("src");
+		var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/, "_" + size + ".$1");
+
+		checkForImage(img, newSrc);		
+	}
 
 	this.upscaleImages = function(){
 	
 
-		
+			var images;
 			var w = window.innerWidth;
 			var h = window.innerHeight;
 
@@ -87,30 +96,23 @@ var upscaleImagerator = function(imageSelector, options){
 		
 				//load really large images
 				
-				var images = document.querySelectorAll(imageSelector);
+				images = document.querySelectorAll(imageSelector);
 
 				Array.prototype.forEach.call(images, function(img){
 					
-					var smallSrc = img.getAttribute("src");
-					var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/, "_" + self.options.suffix4x + ".$1");
-
-					checkForImage(img, newSrc);
-					
+					changeSrc(img, self.options.suffix4x);					
 					
 				});
 		
 			}else if(windowCheck > this.options.threshold2x){
 				// load large images
 								
-				var images = document.querySelectorAll(imageSelector);				
+				images = document.querySelectorAll(imageSelector);				
 
 				Array.prototype.forEach.call(images, function(img){
+
+					changeSrc(img, self.options.suffix2x);
 					
-					var smallSrc = img.getAttribute("src");
-
-					var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/,  "_" + self.options.suffix2x + ".$1");
-
-					checkForImage(img, newSrc);
 				});		
 			}
 	}
