@@ -1,3 +1,4 @@
+/* exported upscaleImagerator */
 var upscaleImagerator = function(imageSelector, options){
 	var self = this;	
 	
@@ -17,7 +18,7 @@ var upscaleImagerator = function(imageSelector, options){
 		suffix2x:"@2x",
 		suffix4x:"@4x",
 		load: true		
-	}
+	};
 
 	// Merge defaults and options
 	for (var attrname in options){ 
@@ -67,7 +68,7 @@ var upscaleImagerator = function(imageSelector, options){
 		var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/, "_" + size + ".$1");
 
 		checkForImage(img, newSrc);		
-	}
+	};
 
 	this.upscaleImages = function(){
 	
@@ -115,11 +116,11 @@ var upscaleImagerator = function(imageSelector, options){
 					
 				});		
 			}
-	}
+	};
 	
 	
 	
 	if(this.options.load){
 		window.addEventListener("load", this.upscaleImages);		
 	}
-}
+};

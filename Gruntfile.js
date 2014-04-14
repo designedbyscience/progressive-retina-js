@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: '<%= concat.dist.dest %>',
-        dest: 'dist/public/assets/javascript/app.min.js'
+        dest: 'dist/progressive-retina.min.js'
       }
     },
 
@@ -98,8 +98,7 @@ module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
 
-  grunt.registerTask('default', ['jshint', 'concat', 'uglify' , 'compass']);
-  grunt.registerTask('test', ['jshint:qunit', 'qunit']);
-  grunt.registerTask('build', ['jshint:dev', 'compass:dev', 'qunit']);
-  grunt.registerTask('distribute', ['jshint:dev', 'qunit', 'copy:dist', 'clean', 'concat', 'removelogging', 'uglify', 'compass:dist', 'usemin', 'imageoptim' ]);
+  grunt.registerTask('default', ['jshint', 'concat', 'uglify']);
+  grunt.registerTask('test', ['jshint:qunit', 'jshint:dev', 'qunit']);
+  grunt.registerTask('build', ['jshint:dev', 'qunit', 'copy:dist', 'clean', 'concat', 'removelogging', 'uglify']);
 };
