@@ -15,8 +15,8 @@ var upscaleImagerator = function(imageSelector, options){
 		threshold2x: 800,
 		threshold4x: 1400,
 		ratio: 4/3,
-		suffix2x:"@2x",
-		suffix4x:"@4x",
+		suffix2x:"_@2x",
+		suffix4x:"_@4x",
 		load: true		
 	};
 
@@ -63,9 +63,9 @@ var upscaleImagerator = function(imageSelector, options){
 	};
 	
 	
-	var changeSrc = function(img, size){
+	var changeSrc = function(img, sizeSuffix){
 		var smallSrc = img.getAttribute("src");
-		var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/, "_" + size + ".$1");
+		var newSrc = smallSrc.replace(/\.(jpg|jpeg|png)/, sizeSuffix + ".$1");
 
 		checkForImage(img, newSrc);		
 	};

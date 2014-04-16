@@ -1,6 +1,6 @@
 {
   "name": "ProgressiveRetinaJS",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "repository": "https://github.com/designedbyscience/progressive-retina-js",
   "scripts": {
     "test": "qunit"
